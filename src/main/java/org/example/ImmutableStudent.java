@@ -1,16 +1,24 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.ToString;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 public final class ImmutableStudent {
 
+    @Getter
     private final int id;
+
+    @Getter
     private final String name;
     private final List<String> hobbies;
+
+    @Getter
     private final LocalDate dob;
     private final Address address;
 
@@ -23,10 +31,6 @@ public final class ImmutableStudent {
         this.address = SerializationUtils.clone(address);
     }
 
-    public int getId() {
-        return id;
-    }
-
 //    public void setId(int id){
 //        this.id = id;
 //    }
@@ -35,26 +39,7 @@ public final class ImmutableStudent {
         return new ArrayList<>(hobbies);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public LocalDate getDob() {
-        return dob;
-    }
-
     public Address getAddress() {
         return SerializationUtils.clone(address);
-    }
-
-    @Override
-    public String toString() {
-        return "ImmutableStudent{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", hobbies=" + hobbies +
-                ", dob=" + dob +
-                ", address=" + address +
-                '}';
     }
 }
